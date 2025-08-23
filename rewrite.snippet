@@ -1,7 +1,7 @@
-hostname = *
+hostname = *.zhihu.com, 103.41.167.*, api.xiaoheihe.cn, gql-fed.reddit.com
 
 # MARK: -  知乎 6.62.0
-# hostname = *.zhihu.com
+# hostname = *.zhihu.com, 103.41.167.*
 # 底部广告
 ^https:\/\/www\.zhihu\.com\/api\/v4\/answers\/\d+\/recommendations$ url script-response-body https://raw.githubusercontent.com/s-w1tch/ad-rules/refs/heads/main/scripts/zhihu.js
 # 关注红点
