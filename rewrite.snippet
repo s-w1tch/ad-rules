@@ -1,2 +1,6 @@
-# 知乎 6.62.0
+# MARK: -  知乎 6.62.0
+hostname = *.zhihu.com
+# 底部广告
 ^https:\/\/www\.zhihu\.com\/api\/v4\/answers\/\d+\/recommendations$ url script-response-body https://raw.githubusercontent.com/s-w1tch/ad-rules/refs/heads/main/scripts/zhihu.js
+# 关注红点
+^https:\/\/api\.zhihu\.com\/moments\/recent\?type=cache url reject
