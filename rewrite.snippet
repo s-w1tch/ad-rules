@@ -4,6 +4,8 @@ hostname = *.zhihu.com
 ^https:\/\/www\.zhihu\.com\/api\/v4\/answers\/\d+\/recommendations$ url script-response-body https://raw.githubusercontent.com/s-w1tch/ad-rules/refs/heads/main/scripts/zhihu.js
 # 关注红点
 ^https:\/\/api\.zhihu\.com\/moments\/recent\?type=cache url reject
+# 热门问题广告
+^https:\/\/api\.zhihu\.com\/v4\/questions\/\d+\/answers url script-response-body https://raw.githubusercontent.com/s-w1tch/ad-rules/refs/heads/main/scripts/zhihu.js
 
 # MARK: - 小黑盒 1.3.293
 hostname = api.xiaoheihe.cn
