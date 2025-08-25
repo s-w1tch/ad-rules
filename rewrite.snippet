@@ -1,9 +1,13 @@
-hostname = *.zhihu.com, api.xiaoheihe.cn, gql-fed.reddit.com
+hostname = *.zhihu.com, api.xiaoheihe.cn, gql-fed.reddit.comguide-acs.m.taobao.com, *.cainiao.com
 
 # MARK: -  知乎 6.62.0
 # hostname = *.zhihu.com
+# 开屏广告
+^https:\/\/api\.zhihu\.com\/commercial_api\/real_time_launch_v2 url reject-200
 # 红点
 ^https:\/\/api\.zhihu\.com\/(moments\/recent|drama\/living-info) url reject
+# 首页推荐广告
+^https:\/\/api\.zhihu\.com\/topstory\/recommend url script-response-body https://raw.githubusercontent.com/s-w1tch/ad-rules/refs/heads/main/scripts/zhihu.js
 # 回答底部广告
 ^https:\/\/www\.zhihu\.com\/api\/v4\/answers\/\d+\/recommendations url script-response-body https://raw.githubusercontent.com/s-w1tch/ad-rules/refs/heads/main/scripts/zhihu.js
 # 问题中间广告
@@ -11,12 +15,21 @@ hostname = *.zhihu.com, api.xiaoheihe.cn, gql-fed.reddit.com
 
 # MARK: - 小黑盒 1.3.329
 # hostname = api.xiaoheihe.cn
-# Banner
+# 首页Banner
 ^https:\/\/api\.xiaoheihe\.cn\/bbs\/app\/feeds\/banner url script-response-body https://raw.githubusercontent.com/s-w1tch/ad-rules/refs/heads/main/scripts/xiaoheihe.js
 # 游戏库Banner
 ^https:\/\/api\.xiaoheihe\.cn\/game\/all_recommend\/v2 url script-response-body https://raw.githubusercontent.com/s-w1tch/ad-rules/refs/heads/main/scripts/xiaoheihe.js
 
-# MARK: - Reddit 2025.31.0.616449
+# MARK: - Reddit 2025.32.0
 # hostname = gql-fed.reddit.com
-# Banner
+# 首页和评论区广告
 ^https:\/\/gql-fed\.reddit\.com url script-response-body https://raw.githubusercontent.com/s-w1tch/ad-rules/refs/heads/main/scripts/reddit.js
+
+# MARK: - 菜鸟裹裹-支付宝小程序
+# hostname = guide-acs.m.taobao.com, *.cainiao.com
+# 每日任务
+^https?:\/\/[a-zA-Z0-9_.-]+\.taobao\.com\/gw\/mtop\.cainiao\.pubaccount\.daily\.task\.activity\.task\.query url reject-200
+# 底部商品推广
+^https?:\/\/[a-zA-Z0-9_.-]+\.taobao\.com\/gw\/mtop\.cainiao\.adx\.flyad\.getad url reject-200
+# 通用广告请求
+^https?:\/\/[a-zA-Z0-9_.-]+\.cainiao\.com\/gw\/mtop\.cainiao\.guoguo\.nbnetflow\.ads url reject-200
