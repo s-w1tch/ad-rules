@@ -11,6 +11,10 @@ if (url.includes("/recommendations")) {
 }
 if (rsp.hasOwnProperty('ad_info')) {
     console.log('-问题中间广告');
-    rsp.ad_info = {};
+    rsp.ad_info = {
+        "position": 3,
+        "ad": {},
+        "adjson": ""
+    };
 }
 $done(JSON.stringify(rsp));
