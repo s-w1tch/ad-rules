@@ -1,11 +1,11 @@
-hostname = *.zhihu.com, api.xiaoheihe.cn, gql-fed.reddit.comguide-acs.m.taobao.com, *.cainiao.com
+hostname = *.zhihu.com, api.xiaoheihe.cn, gql-fed.reddit.comguide-acs.m.taobao.com, *.cainiao.com, api.m.jd.com
 
 # MARK: -  知乎 6.62.0
 # hostname = *.zhihu.com
 # 开屏广告
 ^https:\/\/api\.zhihu\.com\/commercial_api\/real_time_launch_v2 url reject-200
 # 红点
-^https:\/\/api\.zhihu\.com\/(moments\/recent|drama\/living-info) url reject
+^https:\/\/api\.zhihu\.com\/(moments\/recent|drama\/living-info) url reject-200
 # 首页推荐广告
 ^https:\/\/api\.zhihu\.com\/topstory\/recommend url script-response-body https://raw.githubusercontent.com/s-w1tch/ad-rules/refs/heads/main/scripts/zhihu.js
 # 回答底部广告
@@ -33,3 +33,16 @@ hostname = *.zhihu.com, api.xiaoheihe.cn, gql-fed.reddit.comguide-acs.m.taobao.c
 ^https?:\/\/[a-zA-Z0-9_.-]+\.taobao\.com\/gw\/mtop\.cainiao\.adx\.flyad\.getad url reject-200
 # 通用广告请求
 ^https?:\/\/[a-zA-Z0-9_.-]+\.cainiao\.com\/gw\/mtop\.cainiao\.guoguo\.nbnetflow\.ads url reject-200
+
+# MARK: - 京东 12.2.4
+# hostname = api.m.jd.com
+# 禁用各种小广告
+^https:\/\/api\.m\.jd\.com\/client\.action\?functionId=getShopHomeActivityInfo url reject-200
+^https:\/\/m15\.360buyimg\.com\/mobilecms\/jfs url reject-200
+^https:\/\/m\.360buyimg\.com\/cc\/jfs\/t1 url reject-200
+^https:\/\/storage\.360buyimg\.com\/app\.m\.jd\.com\/lottie\/scs_jingEgg.* url reject-200
+# 禁用更新检查
+^https:\/\/api\.m\.jd\.com\/openUpgrade url reject-200
+^https:\/\/api\.m\.jd\.com\/api\/appPublishUpgrade url reject-200
+# 个人页/欢迎页清理
+^https?:\/\/api\.m\.jd\.com\/client\.action url script-response-body https://raw.githubusercontent.com/s-w1tch/ad-rules/refs/heads/main/scripts/jingdong.js
