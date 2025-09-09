@@ -1,4 +1,4 @@
-hostname = *.zhihu.com, api.xiaoheihe.cn, gql-fed.reddit.comguide-acs.m.taobao.com, *.cainiao.com, api.m.jd.com
+hostname = *.zhihu.com, api.xiaoheihe.cn, gql-fed.reddit.comguide-acs.m.taobao.com, *.cainiao.com, api.m.jd.com, c.tieba.baidu.com
 
 # MARK: -  知乎 6.62.0
 # hostname = *.zhihu.com
@@ -47,3 +47,8 @@ hostname = *.zhihu.com, api.xiaoheihe.cn, gql-fed.reddit.comguide-acs.m.taobao.c
 ^https:\/\/api\.m\.jd\.com\/api\/appPublishUpgrade url reject-200
 # 个人页/欢迎页清理
 ^https?:\/\/api\.m\.jd\.com\/client\.action url script-response-body https://raw.githubusercontent.com/s-w1tch/ad-rules/refs/heads/main/scripts/jingdong.js
+
+# MARK: - 贴吧 12.22.3
+# hostname = c.tieba.baidu.com
+# 禁用tiebaads
+^http:\/\/c\.tieba\.baidu\.com/tiebaads url reject-200
